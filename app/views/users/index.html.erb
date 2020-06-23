@@ -1,0 +1,15 @@
+<h1>Users#index</h1>
+<h2>New Book</h2>
+<% @users.each do |user| %>
+<table>
+  <th>image</th>
+  <th>name</th>
+  <th></th>
+  <tr>
+  <td><%= attachment_image_tag @user, :profile_image, :fill, 30, 30, format: 'jpeg' ,fallback:'no_image.jpg',size:'100x100'%></td>
+  <td><%= user.name %></td>
+  <td><%= link_to "show","/users/#{user.id}" %> </td>
+
+  </tr>
+</table>
+<% end %>

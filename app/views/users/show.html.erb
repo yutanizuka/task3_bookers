@@ -1,0 +1,27 @@
+<h1>user#show</h1>
+<%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg' ,fallback:'no_image.jpg'%>
+<p>name:<%= @user.name %> </p>
+<p>introduction:<%= @user.introduction %> </p>
+<p><%= link_to "edit" ,"/users/#{@user.id}/edit" %>
+<h2>New Book</h2>
+<%= form_for @book do |f| %>
+    <%= f.label :Title,"Title" %>
+    <%= f.text_field :title %>
+    <%= f.label :body,"opinion" %>
+    <%= f.text_area :body %>
+  <%= f.submit %>
+<% end %>
+  <table>
+  <th>image</th>
+  <th>name</th>
+  <th>Opnion</th>
+  <% @books.each do |book| %>
+  <tr>
+    <td><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg' %></td>
+    <td><%= book.title %></td>
+    <td><%= book.body %></td>
+  </tr>
+  <% end %>
+</Table>
+ <p>MyPage<%= @user.id %> </p>
+ 

@@ -1,0 +1,15 @@
+<table>
+  <tr>
+  <th>image</th>
+  <th>name</th>
+  <th>Opnion</th>
+  </tr>
+  <% @book.each do |book| %>
+  <tr>
+  <td><%= book.user_id %></td>
+  <td><%= book.title %></td>
+  <td><%= book.body %></td>
+
+  </tr>
+  <% end %>
+</Table>
