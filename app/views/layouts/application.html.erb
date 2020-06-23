@@ -1,42 +1,5 @@
 <!DOCTYPE html>
 <html>
-<div id ="slidemenu">
-  <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
-  <h1>Bookers</h1>
-  <% if user_signed_in? %>
-    <% flash.each do |message_type, message| %>
-      <%= message %>
-    <% end %>
-    
-    <li class="">
-      <%= link_to "Home",user_path(current_user.id) %>
-    </li>
-    <li class="">
-      <%= link_to "Users", "/users" %>
-    </li>
-    <li class="">
-      <%= link_to "Books", books_path %>
-    </li>
-    <li class="">
-      <%= link_to "logout", destroy_user_session_path, method: :delete %>
-    </li>
-  <% else %>
-     <li class="">
-      <%= link_to "Home", "/home/home" %>
-    </li>
-    <li class="">
-      <%= link_to "About", "/home/about" %>
-    </li>
-    <li class="">
-      <%= link_to "sign up", new_user_registration_path %>
-    </li>
-    <li class="">
-      <%= link_to "login", new_user_session_path %>
-    </li>
-  <% end %>
-</ul>
-
-</div>
   <head>
     <title>Bookers</title>
     <%= csrf_meta_tags %>
@@ -45,6 +8,21 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-  <%= yield %>
+    <h1>Bookers</h1>
+        <% flash.each do |message_type, message| %>
+          <%= message %>
+    <% end %>
+      <% if user_signed_in? %>
+        <span class="icon-bar"><%= link_to "Home",user_path(current_user.id) %></span>
+        <span class="icon-bar"><%= link_to "Users", "/users" %></span>
+        <span class="icon-bar"><%= link_to "Books", books_path %></span>
+        <span class="icon-bar"><%= link_to "logout", destroy_user_session_path, method: :delete %></span>
+      <% else %>
+        <%= link_to "Home", "/home/home" %>
+        <%= link_to "About", "/home/about" %>
+        <%= link_to "sign up", new_user_registration_path %>
+        <%= link_to "login", new_user_session_path %>
+      <% end %>
+      <%= yield %>
   </body>
 </html>

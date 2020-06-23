@@ -1,15 +1,36 @@
-<table>
-  <tr>
-  <th>image</th>
-  <th>name</th>
-  <th>Opnion</th>
-  </tr>
-  <% @book.each do |book| %>
-  <tr>
-  <td><%= book.user_id %></td>
-  <td><%= book.title %></td>
-  <td><%= book.body %></td>
-
-  </tr>
-  <% end %>
-</Table>
+<div class="cotainer">
+  <div class="row">
+    <div class="col-lg-4" style="background-color: orange;"> 
+      <h1>books</h1>
+      <h2>User Info</h2>
+      <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg' ,fallback:'no_image.jpg' %>
+      <p><span>name:<%= @user.name %> </span> </p>
+      <p><span>introduction:<%= @user.introduction %></span> </p>
+      <p><%= link_to "edit" ,"/users/#{@user.id}/edit" %>
+      <h2>New Book</h2>
+      <%= form_for @book do |f| %>
+        <h3>Title</h3>
+        <%= f.text_field :title %>
+        <h3>opinion</h3>
+        <%= f.text_area :body %><br>
+        <%= f.submit %>
+      <% end %>
+      <!--
+      <table>
+        <tr>
+          <th>image</th>
+          <th>name</th>
+          <th>Opnion</th>
+        </tr>
+      </table>
+      <% @book.each do |book| %>
+        <tr>
+          <td><%= book.user_id %></td>
+          <td><%= book.title %></td>
+          <td><%= book.body %></td>
+        </tr>
+        <% end %>
+    </div>
+  </div>
+</div>
+-->
