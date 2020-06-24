@@ -15,20 +15,26 @@
           </div>
         <% end %>
       <!--ナビゲーションバー-->
-      <div class="container">
-      <ul class="nav">
-          <span style="font-size:60px">Bookers</span>
-          <span class="icon-bar"><%= link_to "Home",user_path(current_user.id) %></span>
-          <span class="icon-bar"><%= link_to "Users", "/users" %></span>
-          <span class="icon-bar"><%= link_to "Books", books_path %></span>
-          <span class="icon-bar"><%= link_to "logout", destroy_user_session_path, method: :delete %></span>
+      
+        <nav class="navbar navbar-default" style="background-color: #9fc;">
+            <div class="navbar-header">
+              <a class="navbar-brand">Bookers</a>
+            </div>
+           <ul class="nav navbar-nav navbar-right">
+            <li class="icon-bar"><%= link_to "Home",user_path(current_user.id) %></li>
+            <li class="icon-bar"><%= link_to "Users", "/users" %></li>
+            <li class="icon-bar"><%= link_to "Books", books_path %></li>
+            <li class="icon-bar"><%= link_to "logout", destroy_user_session_path, method: :delete %></li>
+          </ul>
         </nav>
-         <div class="container">
-      <div class="row">
-          
+        </ul>
+       
+          <div class="container">
+        <div class="row">
+            
        
         <!--サイドバー-->
-          <div class="col-lg-4"style="background-color: #ccc;" id="sticky-sidebar">
+          <div class="col-lg-4"style="background-color: #6f9;" id="sidebar">
           <h2>User Info</h2>
           <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg' ,fallback:'no_image.jpg' %>
           <p><span>name:<%= @user.name %> </span> </p>
