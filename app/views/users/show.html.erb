@@ -1,13 +1,15 @@
-<h2>books</h2>
-<table>
-<th>image</th>
-<th>name</th>
-<th>Opnion</th>
-<% @books.each do |book| %>
-  <tr>
-    <td><%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg',size:"100x100"%></td>
-    <td><%= book.title %></td>
-    <td><%= book.body %></td>
-  </tr>
-<% end %>
-</table>
+<h1>books</h1>
+<div class="col-lg-8" id="main">
+  <table class="table table-striped">
+  <th>image</th>
+  <th>name</th>
+  <th>Opnion</th>
+  <% @books.each do |book| %>
+    <tr>
+      <td><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg' ,fallback:'no_image.jpg',size:"50x50" %></td>
+      <td><%= book.title %></td>
+      <td><%= book.body %></td>
+    </tr>
+  <% end %>
+  </table>
+</div>
