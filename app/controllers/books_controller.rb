@@ -1,6 +1,5 @@
 class BooksController < ApplicationController
   before_action :authenticate_user!,excepst: [:index] #deviseのメソッドで「ログインしていないユーザーをログイン画面に送る」メソッド
-
   def create
     @book = Book.new(book_params) #フォームから送られてきたデータ(body)をストロングパラメータを経由して@bookに代入
     @book.user_id = current_user.id #user_idの情報はフォームからきてないので、deviseのメソッドを使って「ログインしている自分のid」を代入
