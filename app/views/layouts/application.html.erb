@@ -11,43 +11,43 @@
   <body>
   
     <h1>Bookers</h1>
-        <% flash.each do |message_type, message| %>
-          <%= message %>
-    <% end %>
       <% if user_signed_in? %>
+      <% flash.each do |message_type, message| %>
+          <%= message %>
+        <% end %>
         <span class="icon-bar"><%= link_to "Home",user_path(current_user.id) %></span>
         <span class="icon-bar"><%= link_to "Users", "/users" %></span>
         <span class="icon-bar"><%= link_to "Books", books_path %></span>
         <span class="icon-bar"><%= link_to "logout", destroy_user_session_path, method: :delete %></span>
+      
+      <div class="container">
+      <div class="row">
+       <!--サイドバー-->
+      <div class="col-lg-4"style="background-color: orange;" id="sticky-sidebar">
+        <h2>User Info</h2>
+        <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg' ,fallback:'no_image.jpg' %>
+        <p><span>name:<%= @user.name %> </span> </p>
+        <p><span>introduction:<%= @user.introduction %></span> </p>
+        <p><%= link_to "edit" ,"/users/#{@user.id}/edit" %>
+          <h2>New Book</h2>
+          <%= form_for @book do |f| %>
+            <h3>Title</h3>
+            <%= f.text_field :title %>
+            <h3>opinion</h3>
+            <%= f.text_area :body %><br>
+            <%= f.submit %>
+         <% end %>
+      </div>
       <% else %>
         <%= link_to "Home", "/home/home" %>
         <%= link_to "About", "/home/about" %>
         <%= link_to "sign up", new_user_registration_path %>
         <%= link_to "login", new_user_session_path %>
       <% end %>
-      <div class="container">
-  <div class="row">
-    <div class="col-lg-4"style="background-color: orange;" id="sticky-sidebar">
-      <h2>User Info</h2>
-      <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg' ,fallback:'no_image.jpg' %>
-      <p><span>name:<%= @user.name %> </span> </p>
-      <p><span>introduction:<%= @user.introduction %></span> </p>
-      <p><%= link_to "edit" ,"/users/#{@user.id}/edit" %>
-      <h2>New Book</h2>
-      <%= form_for @book do |f| %>
-        <h3>Title</h3>
-        <%= f.text_field :title %>
-        <h3>opinion</h3>
-        <%= f.text_area :body %><br>
-        <%= f.submit %>
-      <% end %>
-   </div>
-    <div class="col-lg-8" id="main">
-        <table class="table table-striped">
-          <%= yield %>
-        </table>
+      <div class="col-lg-8" id="main">
+          <table class="table table-striped">
+            <%= yield %>
+          </table>
       </div>
-  </div>
-    
   </body>
 </html>

@@ -13,7 +13,6 @@ class BooksController < ApplicationController
       flash.now[:notice] = "error prohibited this book from being saved:"
       render "books/index"
       # redirect_to books_path(params[:id])
-      
     end
   end
   def index
