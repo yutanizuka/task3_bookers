@@ -1,15 +1,12 @@
 <h1>books</h1>
-        <th>image</th>
-        <th>Title</th>
-        <th>Opnion</th>
-        <% @books.each do |book| %>
-          <tr>
-            <td><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg' %></td>
-            <td><%= book.title %></td>
-            <td><%= book.body %></td>
-          </tr>
-        <% end %>
-      <%# </Table> %>
-    <%# </div> %>
-  <%# </div> %>
-<%# </div>   %>
+<th>image</th>
+<th>Title</th>
+<th>Opnion</th>
+<% @books.each do |book| %>
+  <tr>
+    <td><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg' %></td>
+    <td><%= book.title %></td>
+    <td><%= book.body %></td>
+  </tr>
+<% end %>
+
