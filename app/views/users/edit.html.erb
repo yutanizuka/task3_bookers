@@ -1,5 +1,3 @@
-<h1>#users#edit</h1>
-
 <%= form_for(@user, url:"/users/#{@user.id}") do |f| %>
   <h4>タイトル</h4>
   <%= f.text_field :name %>

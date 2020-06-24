@@ -9,6 +9,8 @@ class BooksController < ApplicationController
       # redirect_to books_path(params[:id])
       flash[:notice] = "You have creatad book successfully."
     else
+      @books = Book.all
+      @user = User.find_by(params[:id])
       flash.now[:notice] = "error prohibited this book from being saved:"
       render "books/index"
       # redirect_to books_path(params[:id])
