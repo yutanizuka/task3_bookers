@@ -6,9 +6,10 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    if current_user
-      users_path(params[:id])
-    end
+    user_path(current_user)
   end
 
+  def after_sign_up_path_for(resource)
+    user_path(current_user)
+  end
 end

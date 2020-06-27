@@ -1,0 +1,13 @@
+<!--サイドバー-->
+  <h2>New book</h2>
+<div class="form-group">
+  <div class= "col-mo-8">
+    <%= form_for book do |f| %>
+      <h3>Title</h3>
+      <%= f.text_field :title,class:"col-xs-12" %>
+      <h3>opinion</h3>
+      <%= f.text_area :body, class:"col-xs-12" %>
+        <%= f.submit "Create Book", class:"btn btn-primary col-xs-12" %>
+    <% end %>
+  </div>
+</div>

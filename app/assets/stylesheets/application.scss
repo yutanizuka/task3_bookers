@@ -16,3 +16,29 @@
 
  @import "bootstrap-sprockets";  /*ここを追加*/
  @import "bootstrap";
+
+ .navbar{
+   margin-bottom: -3px;
+ }
+
+ .navbar-left span {
+  font-size: 20px;
+  padding-top: 10px;
+  color: white;
+}
+
+.a:visited {
+  color: #666;
+}
+
+
+.nanavbar-nav {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+}
+
+.form_space{
+  padding-top: 15px;
+  
+}

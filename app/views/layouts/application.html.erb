@@ -4,62 +4,33 @@
     <title>Bookers</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-      <% if user_signed_in? %>
-      <% flash.each do |message_type, message| %>
-          <div class="flashmessage"style="background-color: #cf3;">
-          <%= message %>
-          </div>
+  <nav class="navbar navbar-default" style="background-color: #222;">
+    <div class= "container">
+      <nav class="nav navbar-nav navbar-left">
+        <span>Bookers</span>
+      </nav>
+      <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+          <li><%= link_to("Home",user_path(current_user.id),{class: "glyphicon glyphicon-home"}) %></li>
+          <li><%= link_to("Users", users_path, {class: "glyphicon glyphicon-user"}) %></li>
+          <li><%= link_to("Books", books_path, {class: "glyphicon glyphicon-book"}) %></li>
+          <li><%= link_to("logout", destroy_user_session_path, { method: :delete ,class: "glyphicon glyphicon-log-out"}) %></li>
+        <% else %>	
+          <li> <%= link_to("Home", root_path, {class: "glyphicon glyphicon-home"}) %></li>
+          <li> <%= link_to("About", home_about_path, {class: "glyphicon glyphicon-link"}) %></li>
+          <li> <%= link_to("sign up", new_user_registration_path, {class: "glyphicon glyphicon-log-in"}) %></li>
+          <li> <%= link_to("login", new_user_session_path, {class: "glyphicon glyphicon-edit"}) %> </li>
         <% end %>
-      <!--ナビゲーションバー-->
-      
-        <nav class="navbar navbar-default" style="background-color: #9fc;">
-            <div class="navbar-header">
-              <a class="navbar-brand">Bookers</a>
-            </div>
-           <ul class="nav navbar-nav navbar-right">
-            <li class="icon-bar"><%= link_to "Home",user_path(current_user.id) %></li>
-            <li class="icon-bar"><%= link_to "Users", "/users" %></li>
-            <li class="icon-bar"><%= link_to "Books", books_path %></li>
-            <li class="icon-bar"><%= link_to "logout", destroy_user_session_path, method: :delete %></li>
-          </ul>
-        </nav>
-        </ul>
-       
-          <div class="container">
-        <div class="row">
-            
-       
-        <!--サイドバー-->
-          <div class="col-lg-4"style="background-color: #6f9;" id="sidebar">
-          <h2>User Info</h2>
-          <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg' ,fallback:'no_image.jpg' %>
-          <p><span>name:<%= @user.name %> </span> </p>
-          <p><span>introduction:<%= @user.introduction %></span> </p>
-          <p><%= link_to "edit" ,"/users/#{@user.id}/edit" %>
-            <h2>New book</h2>
-            <%= form_for @book do |f| %>
-              <h3>Title</h3>
-              <%= f.text_field :title %>
-              <h3>opinion</h3>
-              <%= f.text_area :body %><br>
-              <%= f.submit %>
-          <% end %>
-        </div>
-        <% else %>
-          <%= link_to "Home", "/home" %>
-          <%= link_to "About", "/home/about" %>
-          <%= link_to "sign up", new_user_registration_path %>
-          <%= link_to "login", new_user_session_path %>
-        <% end %>
-        <div class="col-lg-8" id="main">
-            <table class="table table-striped">
-              <%= yield %>
-            </table>
-        </div>
-    </body>
-
+      </ul>
+    </div>
+  </nav>
+  <%= flash[:notice] %>
+  <!---->
+    
+    <%= yield %>
+  </body>
 </html>
