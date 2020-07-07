@@ -66,9 +66,12 @@ gem "refile-mini_magick"
 gem 'kaminari','~> 1.2.1'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-rails'
+
 group :test do
   gem 'capybara', '>= 2.15'
   gem 'rspec-rails'
   gem "factory_bot_rails"
   gem 'faker'
 end
+
+gem 'font-awesome-sass', '~>5.4.1'
