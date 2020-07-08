@@ -7,7 +7,7 @@ class BookCommentsController < ApplicationController
     if comment.save
       flash[:success] = "Comment was successfully created."
       # redirect_back(fallback_location: root_path)
-      redicrent_to request.referer
+      redirect_to request.referer
     else
       @book = Book.new
       @book_comments = @book.book_comments
