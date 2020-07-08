@@ -5,7 +5,7 @@ class BookCommentsController < ApplicationController
     comment = book.book_comments.new(book_comment_params)
     comment.user_id = current_user.id
     if comment.save
-      fkash[:success] = "Comment was successfully created."
+      flash[:success] = "Comment was successfully created."
       # redirect_back(fallback_location: root_path)
       redicrent_to request.referer
     else
@@ -14,7 +14,7 @@ class BookCommentsController < ApplicationController
       render '/books/show'
     end
   end
-  
+
   def destroy
     book_comment = BookComment.find(params[:id])
     book_comment.destroy
