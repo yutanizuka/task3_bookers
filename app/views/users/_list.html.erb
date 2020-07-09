@@ -11,6 +11,14 @@
     <th>introduction</th>
     <th><%= user.introduction %></th>
   </tr>
+  <tr>
+    <th>follows:</th>
+    <th><%= link_to user.followings.count, follow_path(user) %></th>
+  </tr>
+  <tr>
+    <th>followers:</th>
+     <th><%= link_to user.followers.count, follower_path(user) %></th>
+  </tr>
 </table>
 <% if user.id == current_user.id %> 
   <%= link_to("", edit_user_path(current_user.id), {class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench"}) %>

@@ -25,6 +25,21 @@ class UsersController < ApplicationController
       render :"users/edit"
     end
   end
+  def follow
+    @book = Book.new #サイドページ投稿用
+    @user = User.find(params[:id])
+    # @users = User.all.order(created_at: :desc) #indexページに一覧表示用
+    @users = @user.followings.all.order(create_at: :desc)
+    @books = @user.books.reverse_order
+  end
+
+  def follower
+    @book = Book.new #サイドページ投稿用
+    @user = User.find(params[:id])
+    # @users = User.all.order(created_at: :desc) #indexページに一覧表示用
+    @users = @user.followings.all.order(create_at: :desc)
+    @books = @user.books.reverse_order
+  end
   private 
   def user_params
     params.require(:user).permit(:name, :introduction, :profile_image)
